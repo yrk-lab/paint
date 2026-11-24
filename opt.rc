@@ -1,0 +1,15 @@
+#!/bin/rc
+# Emits the platform-specific header of the mkfile.
+# Works for plan9port ($PLAN9 set) and for native Plan 9.
+if(! ~ $#PLAN9 0) {
+	# plan9port
+	echo '<$PLAN9/src/mkhdr'
+	echo 'MKONE=$PLAN9/src/mkone'
+	echo 'BIN=$PLAN9/bin'
+}
+if not {
+	# native Plan 9 / 9front
+	echo '</$objtype/mkfile'
+	echo 'MKONE=/sys/src/cmd/mkone'
+	echo 'BIN=/$objtype/bin'
+}
